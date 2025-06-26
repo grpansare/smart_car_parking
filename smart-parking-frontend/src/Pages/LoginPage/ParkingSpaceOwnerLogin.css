@@ -1,0 +1,162 @@
+
+
+/* Main container */
+.main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  overflow: hidden;
+}
+
+/* Background with image */
+.background-container {
+  background-image: url("loginimage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form Container */
+.login-form-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 450px;
+  width: 95%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+.Space-owner-heading {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Signup link */
+.signup-link {
+  display: flex;
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #007bff;
+  text-decoration: none;
+  text-align: center;
+}
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Input Fields */
+.inputbox {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+/* Labels */
+label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Submit Button */
+.submitbtn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+.btn-custom {
+  background-color: purple;
+  color: white;
+}
+.btn-custom:hover {
+  background-color: rgb(200, 38, 200);
+}
+
+/* Forgot Password */
+.password-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.forgot-password {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Go Back / Home Buttons */
+.go-back-home-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+}
+.go-back-home-buttons button {
+  padding: 10px 16px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 45%;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+  .login-form-container {
+    padding: 20px;
+  }
+  .Space-owner-heading {
+    font-size: 26px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+  .login-form-container {
+    padding: 15px;
+    width: 95%;
+  }
+
+  .Space-owner-heading {
+    font-size: 22px;
+  }
+
+  .signup-link {
+    font-size: 14px;
+  }
+
+  .submitbtn,
+  .go-back-home-buttons button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .password-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .forgot-password {
+    margin-left: 0;
+  }
+}

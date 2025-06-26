@@ -1,0 +1,11 @@
+.textfields{
+    padding:1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin:0.5rem 1rem;
+   
+}
+.reg-header{
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
