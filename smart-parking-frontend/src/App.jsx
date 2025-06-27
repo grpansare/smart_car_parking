@@ -14,7 +14,7 @@ import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 
 import AdminDashboard from "./Pages/AdminDashBoard/AdminDashboard";
 import ParkingUsersTable from "./Components/ParkingUsersTable/ParkingUsersTable";
-import AdminHome from "./Pages/AdminHome/AdminHome";
+// import AdminHome from "./Pages/AdminHome/AdminHome";
 import ParkingOwnerProfile from "./Pages/Profile/PakingOwnerProfile";
 import ParkingOwnersTable from "./Components/ParkingOwnersTable.jsx/ParkingOwnersTable";
 import OwnerRequests from "./Components/OwnerRequest/OwnerRequest";
@@ -54,7 +54,7 @@ const App = () => {
             path="ParkingSpaceOwnerLogin"
             element={<ParkingSpaceOwnerLogin />}
           />
-          <Route path="login" element={<LoginPage />} />
+        
           <Route path="/userregister" element={<Registration />} />
           <Route path="/forgetpassword" element={<ForgetPassword />} />
 

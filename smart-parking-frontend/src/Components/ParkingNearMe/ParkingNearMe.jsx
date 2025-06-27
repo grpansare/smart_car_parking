@@ -6,7 +6,7 @@ import SearchBox from "../Hero/SearchBox";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import Cookies from "js-cookie";
+import api from "../../api/axios";
 
 // Fix for default markers in react-leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -21,7 +21,7 @@ import { Alert, Button, Snackbar, CircularProgress, Chip } from "@mui/material";
 import { ConfirmBookingModal } from "../ParkingModal/ConfirmBookingModal";
 
 import { cancelBooking } from "../../Utils/BookingFunctions";
-import axios from "axios";
+
 import { 
   LocationOn, 
   LocalParking, 
@@ -86,16 +86,12 @@ const ParkingNearMe = () => {
   // API functions
   const getParkingSpaces = useCallback(async () => {
     setLoading(true);
-    let token = Cookies.get("jwt") || localStorage.getItem("token");
+
     
     try {
-      const response = await axios.get(
-        `http://localhost:8081/parkingspaces/${searchedPlace}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+      const response = await api.get(
+        `/parkingspaces/${searchedPlace}`,
+      
       );
       setParkingSpaces(response.data);
     } catch (error) {
@@ -107,17 +103,13 @@ const ParkingNearMe = () => {
 
   const getNearSpaces = useCallback(() => {
     if (!currentLocation) return;
-        let token = Cookies.get("jwt") || localStorage.getItem("token");
+   
     
     setLoading(true);
-    axios
+    api
       .get(
-        `http://localhost:8081/parkingspaces/nearby?lat=${currentLocation.lat}&lon=${currentLocation.lon}`,
-         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        `/parkingspaces/nearby?lat=${currentLocation.lat}&lon=${currentLocation.lon}`,
+       
       )
       .then((response) => {
         console.log(response.data);
@@ -140,15 +132,15 @@ const ParkingNearMe = () => {
       return;
     }
 
-    let token = Cookies.get("jwt") || localStorage.getItem("token");
+   
 
     try {
-      const response = await axios.put(
-        `http://localhost:8081/parkingspaces/bookparking`,
+      const response = await api.put(
+        `/parkingspaces/bookparking`,
         { spaceId: selected.spaceIdd },
         {
           params: slotNumber ? { slotNumber } : {},
-          headers: { Authorization: `Bearer ${token}` },
+        
         }
       );
       console.log(response.data);
@@ -168,18 +160,14 @@ const ParkingNearMe = () => {
 
   const startPayment = useCallback(async (paymentData, bookingData) => {
     console.log("Starting payment process");
-    let token = Cookies.get("jwt") || localStorage.getItem("token");
+
 
     try {
       console.log("Sending request to create order");
-      const response = await axios.post(
-        "http://localhost:8081/api/payment/create-order",
+      const response = await api.post(
+        "/api/payment/create-order",
         paymentData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+       
       );
       console.log(currentUser.email);
 
@@ -207,20 +195,16 @@ const ParkingNearMe = () => {
           };
 
           try {
-            await axios.post(
-              "http://localhost:8081/api/payment/store",
+            await api.post(
+              "/api/payment/store",
               paymentDetails,
-              {
-                headers: { Authorization: `Bearer ${token}` },
-              }
+             
             );
 
-            const response = await axios.post(
-              `http://localhost:8081/api/bookings/${selectedSlot}`,
+            const response = await api.post(
+              `/api/bookings/${selectedSlot}`,
               bookingData,
-              {
-                headers: { Authorization: `Bearer ${token}` },
-              }
+             
             );
             console.log(response);
 

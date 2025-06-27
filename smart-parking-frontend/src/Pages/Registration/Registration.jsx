@@ -23,13 +23,14 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
 import Select from "@mui/material/Select";
+import api from "../../api/axios";
 
 const Registration = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const { token, setToken } = useContext(AuthContext);
   const [loading, setisLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const URL = "http://localhost:8081/user/register";
+  const URL = "/user/register";
 
   const navigate = useNavigate();
   const handleBlur = (e) => {
@@ -147,7 +148,7 @@ const Registration = () => {
     }
 
     try {
-      const res = await axios.post(URL, formData);
+      const res = await api.post(URL, formData);
       console.log(res);
 
       if (res.status === 201) {

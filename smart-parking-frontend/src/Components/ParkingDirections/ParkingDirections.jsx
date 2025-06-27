@@ -10,6 +10,7 @@ import "leaflet/dist/leaflet.css";
 import axios from "axios";
 import { Box, Button, Modal, CircularProgress, Alert } from "@mui/material";
 import Cookies from "js-cookie";
+import api from "../../api/axios";
 
 const ParkingDirections = ({ PARKING_ADDRESS, open, onClose }) => {
   const [userLocation, setUserLocation] = useState(null);
@@ -128,14 +129,14 @@ const ParkingDirections = ({ PARKING_ADDRESS, open, onClose }) => {
       setError(null);
 
       // Using OSRM demo server (free, no API key required, but has usage limits)
-  const response = await axios.get("http://localhost:8081/api/directions", {
+  const response = await api.get("/api/directions", {
   params: {
     startLat: 18.5204,
     startLng: 73.8567,
     endLat: 18.5362,
     endLng: 73.8911
   },
-  headers: { Authorization: `Bearer ${token}` }
+ 
 });
 
 
