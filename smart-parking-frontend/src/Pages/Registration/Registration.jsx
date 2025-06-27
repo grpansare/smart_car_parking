@@ -15,7 +15,7 @@ import { FaEnvelope, FaPhone, FaUser, FaKey, FaCar } from "react-icons/fa";
 import "./Registration.css";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import LoginWithGoogle from "../../Components/LoginWithGoogle/LoginWithGoogle";
+
 import { AuthContext } from "../../Utils/AuthContext";
 import Swal from "sweetalert2";
 import axios from "axios";
