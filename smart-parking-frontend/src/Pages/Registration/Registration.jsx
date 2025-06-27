@@ -24,6 +24,7 @@ import { ClipLoader } from "react-spinners";
 
 import Select from "@mui/material/Select";
 import api from "../../api/axios";
+import { FcGoogle } from "react-icons/fc";
 
 const Registration = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -153,7 +154,7 @@ const Registration = () => {
 
       if (res.status === 201) {
         Swal.fire("Success", "Registered successfully!", "success").then(() => {
-          navigate("/login");
+          navigate("/dashboard");
         });
         setisLoading(false);
       }
@@ -175,6 +176,10 @@ const Registration = () => {
         );
       }
     }
+  };
+   const googleLogin = () => {
+    window.location.href =
+      "https://smart-car-parking-v6in.onrender.com/oauth2/authorization/google?prompt=select_account";
   };
 
   return (
@@ -540,8 +545,16 @@ const Registration = () => {
                 </div>
                 
                 <div className="flex justify-center">
-                  <div className="transform transition-all duration-200 hover:scale-105">
-                    <LoginWithGoogle />
+                  <div className="transform transition-all duration-200 hover:scale-105"  >
+                  
+                                <button
+                                  type="button"
+                                  onClick={googleLogin}
+                                  className="enhanced-google-btn"
+                                >
+                                  <FcGoogle size={20} />
+                                  <span>Continue with Google</span>
+                                </button>
                   </div>
                 </div>
               </div>
