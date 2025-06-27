@@ -5,7 +5,7 @@ import Registration from "./Pages/Registration/Registration";
 import { AuthProvider } from "./Utils/AuthContext";
 import Dashboard from "./Pages/DashBoard/DashBoard";
 import ParkingSpaceOwnerLogin from "./Pages/LoginPage/ParkingSpaceOwnerLogin";
-import LoginPage from "./pages/LoginPage/LoginPage";
+
 import ParkingOwnerRegistrationForm from "./Pages/Registration/ParkingOwnerRegistrationForm";
 import UserProfile from "./Pages/Profile/UserProfile";
 import DashBoardHome from "./Pages/DashBoard/DashBoardHome";

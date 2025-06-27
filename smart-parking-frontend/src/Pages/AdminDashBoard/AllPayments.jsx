@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./PaymentHistory.css";
+
 import { useSelector } from "react-redux";
 import axios from "axios";
 import Cookies from "js-cookie";
