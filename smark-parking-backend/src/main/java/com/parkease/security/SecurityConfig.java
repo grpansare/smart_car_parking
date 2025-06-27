@@ -128,7 +128,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         
         // ✅ Allow React Frontend URL
-        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
+        configuration.setAllowedOrigins(List.of("http://localhost:5173","https://smart-car-parking-1.onrender.com"));
         
         // ✅ Allow Headers
         configuration.setAllowedHeaders(List.of("*"));
