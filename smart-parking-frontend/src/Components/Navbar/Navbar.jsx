@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FaBars, FaCar, FaPlusCircle, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Modal } from "@mui/material";
 import { setUser } from "../../Store/UserSlice/UserSlice";
-import ProfileDropdown from "../DropDown/ProfileDropdown";
+
 import api from "../../api/axios";
+import ProfileDropdown from "../Dropdown/ProfileDropdown";
 
 const PrivateNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

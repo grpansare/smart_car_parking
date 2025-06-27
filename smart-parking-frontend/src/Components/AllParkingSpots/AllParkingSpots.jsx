@@ -1,9 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-
-import { FaSearch } from 'react-icons/fa';
-import { FaX } from 'react-icons/fa6'; // Added missing import
-import Navbar from '../Navbar/Navbar';
+// Added missing import
+;
 import Cookies from "js-cookie";
 import ViewOnMapModal from '../ViewOnMapModal/ViewOnMapModal';
 import { useSelector } from 'react-redux';

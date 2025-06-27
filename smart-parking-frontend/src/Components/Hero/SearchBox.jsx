@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import Cookies from "js-cookie";
+
 
 import { FaX } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+
 import LoginModal from "../../Pages/LoginPage/LoginPage";
 import useAuthStatus from "../../Hooks/useAuthStatus";
 

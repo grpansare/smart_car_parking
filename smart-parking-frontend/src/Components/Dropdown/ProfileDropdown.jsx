@@ -6,7 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";  // Icon for profile
 import { Logout } from "../../Store/UserSlice/UserSlice";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
-import Cookies from 'js-cookie';
+
 import { NavLink, useNavigate } from "react-router-dom";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"; // Accordion expand icon
