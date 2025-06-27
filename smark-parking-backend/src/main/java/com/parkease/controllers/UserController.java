@@ -238,7 +238,7 @@ public class UserController {
                     .body(Map.of("message", "Invalid email or password"));
             }
         } catch (Exception e) {
-        	System.out.println("undkjsanfkjnlfk");
+        	System.out.println(e.getMessage());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                 .body(Map.of("message", "Invalid email or password"));
         }
