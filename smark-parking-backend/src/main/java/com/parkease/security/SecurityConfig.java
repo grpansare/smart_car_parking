@@ -206,7 +206,7 @@ public class SecurityConfig {
             response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
 
           
-            response.sendRedirect("http://localhost:5173/dashboard");
+            response.sendRedirect("https://smart-car-parking-1.onrender.com/dashboard");
 
         };
     }
