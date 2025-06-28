@@ -54,7 +54,7 @@ import jakarta.mail.MessagingException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.java.Log;
-@CrossOrigin()
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
