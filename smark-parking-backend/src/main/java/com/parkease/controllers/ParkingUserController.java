@@ -47,7 +47,7 @@ import jakarta.mail.MessagingException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://smart-car-parking-1.onrender.com/")
 @RestController
 @RequestMapping("/parkinguser")
 @PreAuthorize("hasRole('USER')")
