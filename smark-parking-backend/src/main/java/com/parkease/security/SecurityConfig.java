@@ -184,23 +184,22 @@ public class SecurityConfig {
             System.out.println("Generated Token: " + jwtToken);
 
           
-            ResponseCookie accessCookie = ResponseCookie.from("token", jwtToken)
-                    .httpOnly(true)
-                    .secure(false) // true in production (HTTPS)
-                    .path("/")
-                    .maxAge(Duration.ofMinutes(15))
-                    
-                    .domain("localhost")
-                 
-                    .build();
+           ResponseCookie accessCookie = ResponseCookie.from("token", jwtToken)
+        .httpOnly(true)
+        .secure(true) // ✅ use true in production
+        .path("/")
+        .maxAge(Duration.ofMinutes(15))
+        .sameSite("Lax") // or "Strict" if needed
+        .build();
 
-            ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
-                    .httpOnly(true)
-                    .secure(false) // true in production
-                    .path("/")
-                    .maxAge(Duration.ofDays(1))
-                    .sameSite("Strict")
-                    .build();
+ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
+        .httpOnly(true)
+        .secure(true)
+        .path("/")
+        .maxAge(Duration.ofDays(1))
+        .sameSite("Lax")
+        .build();
+
 
             response.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
             response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
