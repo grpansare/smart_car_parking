@@ -41,7 +41,7 @@ const FeaturedParkingSpaces = () => {
   const handleCloseModal = () => setOpen(false);
 
   useEffect(() => {
-    axios
+    api
       .get("https://smart-car-parking-v6in.onrender.com/parkingspaces/getAllParkingSpaces")
       .then((res) => {
         setFeaturedSpots(res.data);
