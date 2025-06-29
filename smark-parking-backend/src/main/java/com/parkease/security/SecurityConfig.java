@@ -104,7 +104,7 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable) // ✅ Disable CSRF for development
             .cors(cors -> cors.configurationSource(corsConfigurationSource())) // ✅ Apply global CORS
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/user/login","/user/refresh","/user/success",	"/parkingspaces/getAllParkingSpaces","/parkingowner","parkingowner/{id}/upload-image","/api/payment/getPayments","/api/bookings/download/pdf","/admin/**","/admin/getParkingUsers", "/uploads/**", "/user/register","/user/send","/user/changepassword","/user/verify", "/auth/google/callback").permitAll()
+                .requestMatchers("/user/login","/user/refresh",	"/parkingspaces/getAllParkingSpaces","/parkingowner","parkingowner/{id}/upload-image","/api/payment/getPayments","/api/bookings/download/pdf","/admin/**","/admin/getParkingUsers", "/uploads/**", "/user/register","/user/send","/user/changepassword","/user/verify", "/auth/google/callback").permitAll()
        
                 .requestMatchers("/auth/user/**").hasAuthority("USER")
                 .requestMatchers("/api/bookings").hasAuthority("USER")
@@ -128,7 +128,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         
         // ✅ Allow React Frontend URL
-        configuration.setAllowedOrigins(List.of("https://smart-car-parking-1.onrender.com"));
+        configuration.setAllowedOrigins(List.of("http://localhost:5173","https://smart-car-parking-1.onrender.com"));
         
         // ✅ Allow Headers
         configuration.setAllowedHeaders(List.of("*"));
@@ -184,28 +184,29 @@ public class SecurityConfig {
             System.out.println("Generated Token: " + jwtToken);
 
           
-           ResponseCookie accessCookie = ResponseCookie.from("token", jwtToken)
-        .httpOnly(true)
-        .secure(true) // ✅ use true in production
-        .path("/")
-        .maxAge(Duration.ofMinutes(15))
-        .sameSite("None") // or "Strict" if needed
-        .build();
+            ResponseCookie accessCookie = ResponseCookie.from("token", jwtToken)
+                    .httpOnly(true)
+                    .secure(false) // true in production (HTTPS)
+                    .path("/")
+                    .maxAge(Duration.ofMinutes(15))
+                    
+                    .domain("localhost")
+                 
+                    .build();
 
-ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
-        .httpOnly(true)
-        .secure(true)
-        .path("/")
-        .maxAge(Duration.ofDays(1))
-        .sameSite("None")
-        .build();
-
+            ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
+                    .httpOnly(true)
+                    .secure(false) // true in production
+                    .path("/")
+                    .maxAge(Duration.ofDays(1))
+                    .sameSite("Strict")
+                    .build();
 
             response.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
             response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
 
           
-            response.sendRedirect("https://smart-car-parking-1.onrender.com/dashboard");
+            response.sendRedirect("http://localhost:5173/dashboard");
 
         };
     }
