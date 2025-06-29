@@ -16,6 +16,7 @@ const PrivateRoute = () => {
       // 🔁 No localStorage token — check cookie via backend
       const checkCookieAuth = async () => {
         try {
+          alert("from private route");
           await api.get("/user/success"); 
           setIsAuthenticated(true);
         } catch (err) {
