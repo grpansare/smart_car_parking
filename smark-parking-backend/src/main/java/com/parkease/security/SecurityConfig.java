@@ -197,7 +197,7 @@ ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
         .secure(true)
         .path("/")
         .maxAge(Duration.ofDays(1))
-        .sameSite("None")s
+        .sameSite("None")
         .build();
 
 
