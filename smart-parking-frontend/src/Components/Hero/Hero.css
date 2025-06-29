@@ -15,7 +15,8 @@
     padding: 20px;
     border-radius: 10px;
     margin-top: 1rem;
-    
+    max-width: 90%;
+    width: 100%;
 }
 
 .hero h1 {
@@ -36,18 +37,100 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .findbtn:hover {
     background-color: #e6b800;
 }
 
-/* .searchbox{
+.hero-search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+    align-items: center;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .hero-txt {
+        padding: 15px;
+        margin-top: 0.5rem;
+        max-width: 95%;
+    }
     
-    padding: 0.8rem;
-    border-radius: 0.8rem;
-    color: black;
-    /* justify-content: space-between; */
- 
+    .hero h1 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+    
+    .findbtn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-search-box {
+        gap: 0.8rem;
+        margin: 1.5rem 0;
+    }
+}
 
+@media (max-width: 480px) {
+    .hero {
+        height: 70vh;
+    }
+    
+    .hero-txt {
+        padding: 12px;
+        border-radius: 8px;
+        max-width: 98%;
+    }
+    
+    .hero h1 {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    
+    .findbtn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .hero-search-box {
+        gap: 0.6rem;
+        margin: 1rem 0;
+    }
+}
 
+@media (max-width: 320px) {
+    .hero-txt {
+        padding: 10px;
+        margin-top: 0;
+    }
+    
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+    
+    .hero p {
+        font-size: 0.8rem;
+    }
+    
+    .findbtn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+}
