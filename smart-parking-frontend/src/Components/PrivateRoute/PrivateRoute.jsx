@@ -4,7 +4,7 @@ import api from "../../api/axios"; // Axios instance with `withCredentials: true
 import { LogIn } from "lucide-react";
 
 const PrivateRoute = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null); // null = loading
+  const [isAuthenticated, setIsAuthenticated] = useState(null); 
 
   useEffect(() => {
     const localToken = localStorage.getItem("token");
