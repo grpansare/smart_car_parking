@@ -20,7 +20,7 @@ api.interceptors.response.use(
     const original = err.config;
 
     // 🛑 Don't retry if request was login or register
-    const excludedPaths = ["/user/login", "/user/register"];
+    const excludedPaths = ["/user/login", "/user/register", "/user/success"];
     const isExcluded = excludedPaths.some((path) =>
       original.url.includes(path)
     );
@@ -37,7 +37,9 @@ api.interceptors.response.use(
         const newAccessToken = response.data.accessToken;
 
         localStorage.setItem("token", newAccessToken);
-        api.defaults.headers.common["Authorization"] = `Bearer ${newAccessToken}`;
+        api.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${newAccessToken}`;
         original.headers["Authorization"] = `Bearer ${newAccessToken}`;
 
         return api(original); // Retry original request

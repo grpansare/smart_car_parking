@@ -16,6 +16,7 @@ const useAuthStatus = () => {
       }
 
       try {
+        alert("Checking authentication status...");
         await api.get("/user/success"); // checks if cookie token is valid
         setIsAuthenticated(true);
       } catch {
