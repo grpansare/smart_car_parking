@@ -128,7 +128,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         
         // ✅ Allow React Frontend URL
-        configuration.setAllowedOrigins(List.of("http://localhost:5173","https://smart-car-parking-1.onrender.com"));
+        configuration.setAllowedOrigins(List.of("https://smart-car-parking-1.onrender.com"));
         
         // ✅ Allow Headers
         configuration.setAllowedHeaders(List.of("*"));
@@ -186,27 +186,27 @@ public class SecurityConfig {
           
             ResponseCookie accessCookie = ResponseCookie.from("token", jwtToken)
                     .httpOnly(true)
-                    .secure(false) // true in production (HTTPS)
+                    .secure(true) // true in production (HTTPS)
                     .path("/")
                     .maxAge(Duration.ofMinutes(15))
-                    
-                    .domain("localhost")
+                     .sameSite("None")
+                 
                  
                     .build();
 
             ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
                     .httpOnly(true)
-                    .secure(false) // true in production
+                    .secure(true) // true in production
                     .path("/")
                     .maxAge(Duration.ofDays(1))
-                    .sameSite("Strict")
+                    .sameSite("None")
                     .build();
 
             response.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
             response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
 
           
-            response.sendRedirect("http://localhost:5173/dashboard");
+            response.sendRedirect("https://smart-car-parking-1.onrender.com/dashboard");
 
         };
     }
