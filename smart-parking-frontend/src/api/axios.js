@@ -1,29 +1,30 @@
-// src/api/axios.js
 import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://smart-car-parking-v6in.onrender.com",
-  withCredentials: true,
+  withCredentials: true, // ✅ Send cookies (Google login)
 });
 
-// Automatically attach access token
+// ✅ Add token from localStorage if available (for normal login)
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
-  if (token) config.headers["Authorization"] = `Bearer ${token}`;
+
+  if (token) {
+    config.headers["Authorization"] = `Bearer ${token}`;
+  }
+  
+  // Else: let backend use token from HttpOnly cookie
   return config;
 });
 
-// Intercept and handle refresh token
+// ✅ Refresh token mechanism
 api.interceptors.response.use(
   (res) => res,
   async (err) => {
     const original = err.config;
 
-    // 🛑 Don't retry if request was login or register
     const excludedPaths = ["/user/login", "/user/register"];
-    const isExcluded = excludedPaths.some((path) =>
-      original.url.includes(path)
-    );
+    const isExcluded = excludedPaths.some((path) => original.url.includes(path));
 
     if (
       err.response?.status === 401 &&
@@ -32,15 +33,17 @@ api.interceptors.response.use(
       !isExcluded
     ) {
       original._retry = true;
+
       try {
-        const response = await api.post("/user/refresh"); // ⬅ Uses refreshToken cookie
+        const response = await api.post("/user/refresh"); // ➕ Refresh token from cookie
         const newAccessToken = response.data.accessToken;
 
+        // 🛑 Only store in localStorage if normal login used
         localStorage.setItem("token", newAccessToken);
         api.defaults.headers.common["Authorization"] = `Bearer ${newAccessToken}`;
         original.headers["Authorization"] = `Bearer ${newAccessToken}`;
 
-        return api(original); // Retry original request
+        return api(original);
       } catch (refreshErr) {
         localStorage.removeItem("token");
         window.location.href = "/";
