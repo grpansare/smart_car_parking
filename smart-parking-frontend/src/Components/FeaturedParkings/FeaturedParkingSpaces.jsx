@@ -42,7 +42,7 @@ const FeaturedParkingSpaces = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8081/parkingspaces/getAllParkingSpaces")
+      .get("https://smart-car-parking-v6in.onrender.com/parkingspaces/getAllParkingSpaces")
       .then((res) => {
         setFeaturedSpots(res.data);
         const count = res.data.length;
@@ -98,7 +98,7 @@ const FeaturedParkingSpaces = () => {
                 <div key={index} className="px-3">
                   <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform hover:scale-105">
                     <img
-                      src={`http://localhost:8081/${spot.parkingSpaceImage}`}
+                      src={`https://smart-car-parking-v6in.onrender.com/${spot.parkingSpaceImage}`}
                       alt={spot.lotName}
                       className="w-full h-48 object-cover"
                     />
@@ -121,7 +121,7 @@ const FeaturedParkingSpaces = () => {
               <div className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform hover:scale-105">
                 <img
                   src={
-                    `http://localhost:8081/${featuredSpots[0].parkingSpaceImage}` ||
+                    `https://smart-car-parking-v6in.onrender.com/${featuredSpots[0].parkingSpaceImage}` ||
                     "parkingspace.jpeg"
                   }
                   alt={featuredSpots[0].lotName}
