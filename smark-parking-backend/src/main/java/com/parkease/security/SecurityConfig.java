@@ -189,7 +189,7 @@ public class SecurityConfig {
         .secure(true) // ✅ use true in production
         .path("/")
         .maxAge(Duration.ofMinutes(15))
-        .sameSite("Lax") // or "Strict" if needed
+        .sameSite("None") // or "Strict" if needed
         .build();
 
 ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
@@ -197,7 +197,7 @@ ResponseCookie refreshCookie = ResponseCookie.from("refreshToken", refreshToken)
         .secure(true)
         .path("/")
         .maxAge(Duration.ofDays(1))
-        .sameSite("Lax")
+        .sameSite("None")s
         .build();
 
 
