@@ -104,7 +104,7 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable) // ✅ Disable CSRF for development
             .cors(cors -> cors.configurationSource(corsConfigurationSource())) // ✅ Apply global CORS
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/user/login","/user/refresh",	"/parkingspaces/getAllParkingSpaces","/parkingowner","parkingowner/{id}/upload-image","/api/payment/getPayments","/api/bookings/download/pdf","/admin/**","/admin/getParkingUsers", "/uploads/**", "/user/register","/user/send","/user/changepassword","/user/verify", "/auth/google/callback").permitAll()
+                .requestMatchers("/user/login","/user/refresh","/user/success",	"/parkingspaces/getAllParkingSpaces","/parkingowner","parkingowner/{id}/upload-image","/api/payment/getPayments","/api/bookings/download/pdf","/admin/**","/admin/getParkingUsers", "/uploads/**", "/user/register","/user/send","/user/changepassword","/user/verify", "/auth/google/callback").permitAll()
        
                 .requestMatchers("/auth/user/**").hasAuthority("USER")
                 .requestMatchers("/api/bookings").hasAuthority("USER")
