@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { NavLink } from "react-router-dom";
 import ViewOnMapModal from "../ViewOnMapModal/ViewOnMapModal";
+import api from "../../api/axios"; 
 
 const settings = {
   dots: true,
@@ -42,7 +43,7 @@ const FeaturedParkingSpaces = () => {
 
   useEffect(() => {
     api
-      .get("https://smart-car-parking-v6in.onrender.com/parkingspaces/getAllParkingSpaces")
+      .get("/parkingspaces/getAllParkingSpaces")
       .then((res) => {
         setFeaturedSpots(res.data);
         const count = res.data.length;
