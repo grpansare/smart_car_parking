@@ -35,6 +35,20 @@ spec:
       name: "workspace-volume"
       readOnly: false
 
+  - name: node
+    image: "node:20-alpine"
+    resources:
+      limits:
+        memory: "1Gi"
+        cpu: "1"
+      requests:
+        memory: "512Mi"
+        cpu: "0.5"
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+
   volumes:
   - name: "workspace-volume"
     emptyDir: {}
@@ -163,24 +177,30 @@ spec:
 
                         stage('Frontend: Install') {
                             steps {
-                                dir('smart-parking-frontend') {
-                                    sh 'npm ci'
+                                container('node') {
+                                    dir('smart-parking-frontend') {
+                                        sh 'npm ci'
+                                    }
                                 }
                             }
                         }
 
                         stage('Frontend: Lint') {
                             steps {
-                                dir('smart-parking-frontend') {
-                                    sh 'npm run lint || true'
+                                container('node') {
+                                    dir('smart-parking-frontend') {
+                                        sh 'npm run lint || true'
+                                    }
                                 }
                             }
                         }
 
                         stage('Frontend: Build') {
                             steps {
-                                dir('smart-parking-frontend') {
-                                    sh 'CI=false npm run build'
+                                container('node') {
+                                    dir('smart-parking-frontend') {
+                                        sh 'CI=false npm run build'
+                                    }
                                 }
                             }
                         }
