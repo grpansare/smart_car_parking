@@ -62,7 +62,6 @@ spec:
 
     tools {
         maven 'maven3'
-        nodejs 'NodeJS18'
     }
 
     environment {
