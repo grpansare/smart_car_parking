@@ -118,7 +118,7 @@ spec:
                         stage('Backend: SonarQube') {
                             steps {
                                 dir('smark-parking-backend') {
-                                    withSonarQubeEnv('sonarqube-2401115') {
+                                    withSonarQubeEnv('sonar-server') {
                                         sh """
                                             mvn sonar:sonar \
                                                 -Dsonar.projectKey=smart-parking-backend \
@@ -211,7 +211,7 @@ spec:
                         stage('Frontend: SonarQube') {
                             steps {
                                 dir('smart-parking-frontend') {
-                                    withSonarQubeEnv('sonarqube-2401115') {
+                                    withSonarQubeEnv('sonar-server') {
                                         sh """
                                             ${SCANNER_HOME}/bin/sonar-scanner \
                                                 -Dsonar.projectKey=smart-parking-frontend \
