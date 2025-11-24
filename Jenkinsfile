@@ -6,7 +6,7 @@ pipeline {
 spec:
   containers:
   - name: jnlp
-    image: "jenkins/inbound-agent-jdk17:latest"
+    image: "jenkins/inbound-agent:jdk17"
     resources:
       limits:
         memory: "2Gi"
