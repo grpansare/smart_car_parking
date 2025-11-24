@@ -43,10 +43,10 @@ spec:
     - infinity
     resources:
       limits:
-        memory: "1Gi"
+        memory: "3Gi"
         cpu: "1"
       requests:
-        memory: "512Mi"
+        memory: "2Gi"
         cpu: "0.5"
     volumeMounts:
     - mountPath: "/home/jenkins/agent"
