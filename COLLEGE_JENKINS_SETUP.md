@@ -65,15 +65,18 @@ Complete step-by-step instructions to deploy the Smart Parking CI/CD pipeline on
    - Check **Install automatically**
 5. Click **Save**
 
-#### 3.2 Configure JDK
+#### 3.2 Configure JDK (Safe Method)
+
+**⚠️ IMPORTANT:** Since this is a college server, do **NOT** delete or modify the existing `JDK17` entry. Add a **NEW** one instead.
 
 1. In the same **Global Tool Configuration** page
 2. Scroll to **JDK** section
-3. Click **Add JDK**
-4. Configure:
-   - **Name:** `JDK17`
+3. Click **Add JDK** (This creates a new entry at the bottom)
+4. Configure the NEW entry:
+   - **Name:** `JDK17-Adoptium` (Must match the new name in Jenkinsfile)
    - **Install automatically:** Check this
-   - **Version:** Select Java 17 (e.g., "jdk-17.0.9+9")
+   - **Installer:** Click **Add Installer** → Select **Install from Adoptium** (or Eclipse Temurin)
+   - **Version:** Select a JDK 17 version (e.g., `jdk-17.0.8+7`)
 5. Click **Save**
 
 #### 3.3 Configure NodeJS

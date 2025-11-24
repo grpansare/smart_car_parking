@@ -45,11 +45,10 @@ spec:
     tools {
         maven 'maven3'
         nodejs 'NodeJS18'
-        // removed: jdk 'JDK17-Adoptium' → JDK already inside inbound-agent image
     }
 
     environment {
-        JAVA_HOME = "/opt/java/openjdk"   // JDK from agent image
+        JAVA_HOME = "/opt/java/openjdk"
         PATH = "${JAVA_HOME}/bin:${PATH}"
 
         NEXUS_DOCKER_REGISTRY = 'nexus.imcc.com:8082'
@@ -73,23 +72,24 @@ spec:
 
         stage('Checkout') {
             steps {
-                echo '📥 Checking out code from GitHub...'
+                echo '📥 Checking out code...'
                 checkout scm
                 script {
                     env.GIT_COMMIT_MSG = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
                     env.GIT_AUTHOR = sh(script: 'git log -1 --pretty=%an', returnStdout: true).trim()
-                    echo "Commit: ${env.GIT_COMMIT_MSG} by ${env.GIT_AUTHOR}"
                 }
             }
         }
 
         stage('Build & Test') {
             parallel {
+
+                // Backend Pipeline
                 stage('Backend Pipeline') {
                     stages {
+
                         stage('Backend: Build') {
                             steps {
-                                echo '🔨 Building backend...'
                                 dir('smark-parking-backend') {
                                     sh 'mvn clean compile -DskipTests'
                                 }
@@ -138,7 +138,7 @@ spec:
                                 dir('smark-parking-backend') {
                                     sh """
                                         mvn deploy -DskipTests \
-                                            -DaltDeploymentRepository=nexus::default::${NEXUS_URL}/repository/${NEXUS_REPOSITORY}
+                                        -DaltDeploymentRepository=nexus::default::${NEXUS_URL}/repository/${NEXUS_REPOSITORY}
                                     """
                                 }
                             }
@@ -148,7 +148,8 @@ spec:
                             steps {
                                 dir('smark-parking-backend') {
                                     script {
-                                        env.BACKEND_IMAGE = docker.build("${NEXUS_DOCKER_REGISTRY}/smart-parking-backend:${BUILD_VERSION}")
+                                        env.BACKEND_IMAGE =
+                                            docker.build("${NEXUS_DOCKER_REGISTRY}/smart-parking-backend:${BUILD_VERSION}")
                                         docker.build("${NEXUS_DOCKER_REGISTRY}/smart-parking-backend:latest")
                                     }
                                 }
@@ -165,10 +166,11 @@ spec:
                                 }
                             }
                         }
+
                     }
                 }
 
-                // ---------- Frontend ----------
+                // Frontend Pipeline
                 stage('Frontend Pipeline') {
                     stages {
 
@@ -215,7 +217,8 @@ spec:
                             steps {
                                 dir('smart-parking-frontend') {
                                     script {
-                                        env.FRONTEND_IMAGE = docker.build("${NEXUS_DOCKER_REGISTRY}/smart-parking-frontend:${BUILD_VERSION}")
+                                        env.FRONTEND_IMAGE =
+                                            docker.build("${NEXUS_DOCKER_REGISTRY}/smart-parking-frontend:${BUILD_VERSION}")
                                         docker.build("${NEXUS_DOCKER_REGISTRY}/smart-parking-frontend:latest")
                                     }
                                 }
@@ -232,8 +235,10 @@ spec:
                                 }
                             }
                         }
+
                     }
                 }
+
             }
         }
 
@@ -255,22 +260,23 @@ spec:
                 """
             }
         }
-    }
+
+    } // --- END stages ---
 
     post {
 
-    success {
-        echo "🎉 Smart Parking ${BUILD_VERSION} deployed successfully!"
+        success {
+            echo "🎉 Smart Parking ${BUILD_VERSION} deployed successfully!"
+        }
+
+        failure {
+            echo "❌ Pipeline failed! Rolling back..."
+            sh "docker-compose down || true"
+        }
+
+        always {
+            echo "🧹 Workspace cleanup skipped (Kubernetes agent auto-cleans)."
+        }
     }
 
-    failure {
-        echo "❌ Pipeline failed! Rolling back..."
-        sh "docker-compose down || true"
-        
-
-    always {
-        echo "🧹 Workspace cleanup skipped (Kubernetes agent auto-cleans)."
-    }
-}
-
-}
+} // --- END pipeline ---
