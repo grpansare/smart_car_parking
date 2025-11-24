@@ -193,7 +193,7 @@ spec:
                         stage('Frontend: Build') {
                             steps {
                                 dir('smart-parking-frontend') {
-                                    sh 'npm run build'
+                                    sh 'CI=false npm run build'
                                 }
                             }
                         }
