@@ -116,6 +116,7 @@ spec:
 
 
                         stage('Backend: SonarQube') {
+                            when { expression { false } } // Temporarily disabled due to DNS issues
                             steps {
                                 dir('smark-parking-backend') {
                                     withSonarQubeEnv('sonarqube-2401115') {
@@ -209,6 +210,7 @@ spec:
                         }
 
                         stage('Frontend: SonarQube') {
+                            when { expression { false } } // Temporarily disabled due to DNS issues
                             steps {
                                 dir('smart-parking-frontend') {
                                     withSonarQubeEnv('sonarqube-2401115') {
