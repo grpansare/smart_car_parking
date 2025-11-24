@@ -105,7 +105,7 @@ spec:
                             post {
                                 always {
                                     dir('smark-parking-backend') {
-                                        junit '**/target/surefire-reports/*.xml'
+                                        junit testResults: '**/target/surefire-reports/*.xml', allowEmptyResults: true
                                     }
                                 }
                             }
