@@ -26,7 +26,7 @@ services:
 
   # Backend Service
   backend:
-    image: localhost:8082/smart-parking-backend:latest
+    image: nexus.imcc.com:8082/smart-parking-backend:latest
     container_name: smart-parking-backend
     ports:
       - "8081:8081"
@@ -53,7 +53,7 @@ services:
 
   # Frontend Service
   frontend:
-    image: localhost:8082/smart-parking-frontend:latest
+    image: nexus.imcc.com:8082/smart-parking-frontend:latest
     container_name: smart-parking-frontend
     ports:
       - "80:80"
