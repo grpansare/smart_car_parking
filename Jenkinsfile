@@ -1,11 +1,13 @@
 pipeline {
     agent {
         kubernetes {
-            inheritFrom 'default'
+            // Disable inheritance to ensure our memory limits are used
+            inheritFrom ''
             yaml '''
 spec:
   containers:
   - name: jnlp
+    image: "jenkins/inbound-agent:3283.v92c105e0f819-7"
     resources:
       limits:
         memory: "2Gi"
@@ -13,6 +15,28 @@ spec:
       requests:
         memory: "1Gi"
         cpu: "1"
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  - name: dind
+    image: "docker:dind"
+    securityContext:
+      privileged: true
+    resources:
+      limits:
+        memory: "4Gi"
+        cpu: "2"
+      requests:
+        memory: "1Gi"
+        cpu: "1"
+    volumeMounts:
+    - mountPath: "/home/jenkins/agent"
+      name: "workspace-volume"
+      readOnly: false
+  volumes:
+  - name: "workspace-volume"
+    emptyDir: {}
 '''
         }
     }
