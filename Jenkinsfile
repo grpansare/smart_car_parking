@@ -262,14 +262,14 @@ spec:
             echo "🎉 Smart Parking ${BUILD_VERSION} deployed successfully!"
         }
 
-        failure {
-            echo "❌ Pipeline failed! Rolling back..."
+       failure {
+    echo '❌ Pipeline failed!'
+    echo '🔄 Rolling back deployment...'
+    script {
+        sh "docker-compose down || true"
+    }
+}
 
-            // FIX: wrap rollback inside node
-            node {
-                sh "docker-compose down || true"
-            }
-        }
 
         always {
             echo "🧹 Cleaning workspace..."
