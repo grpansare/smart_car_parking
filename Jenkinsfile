@@ -53,6 +53,13 @@ spec:
       name: "workspace-volume"
       readOnly: false
 
+  hostAliases:
+  - ip: "192.168.20.250"
+    hostnames:
+    - "nexus.imcc.com"
+    - "sonarqube.imcc.com"
+    - "jenkins.imcc.com"
+
   volumes:
   - name: "workspace-volume"
     emptyDir: {}
