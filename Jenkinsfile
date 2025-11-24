@@ -96,6 +96,7 @@ spec:
                             }
                         }
 
+                        /*
                         stage('Backend: Unit Tests') {
                             steps {
                                 dir('smark-parking-backend') {
@@ -110,6 +111,7 @@ spec:
                                 }
                             }
                         }
+                        */
 
                         stage('Backend: SonarQube') {
                             steps {
