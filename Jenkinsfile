@@ -96,22 +96,7 @@ spec:
                             }
                         }
 
-                        /*
-                        stage('Backend: Unit Tests') {
-                            steps {
-                                dir('smark-parking-backend') {
-                                    sh 'mvn test'
-                                }
-                            }
-                            post {
-                                always {
-                                    dir('smark-parking-backend') {
-                                        junit testResults: '**/target/surefire-reports/*.xml', allowEmptyResults: true
-                                    }
-                                }
-                            }
-                        }
-                        */
+
 
                         stage('Backend: SonarQube') {
                             steps {
