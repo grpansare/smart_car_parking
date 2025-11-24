@@ -1,5 +1,21 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            inheritFrom 'default'
+            yaml '''
+spec:
+  containers:
+  - name: jnlp
+    resources:
+      limits:
+        memory: "2Gi"
+        cpu: "2"
+      requests:
+        memory: "1Gi"
+        cpu: "1"
+'''
+        }
+    }
     
     tools {
         maven 'maven3'
