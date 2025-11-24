@@ -37,6 +37,10 @@ spec:
 
   - name: node
     image: "node:20-alpine"
+    command:
+    - sleep
+    args:
+    - infinity
     resources:
       limits:
         memory: "1Gi"
