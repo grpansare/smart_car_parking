@@ -258,22 +258,19 @@ spec:
     }
 
     post {
-        success {
-            echo "🎉 Smart Parking ${BUILD_VERSION} deployed successfully!"
-        }
 
-       failure {
-    echo '❌ Pipeline failed!'
-    echo '🔄 Rolling back deployment...'
-    script {
+    success {
+        echo "🎉 Smart Parking ${BUILD_VERSION} deployed successfully!"
+    }
+
+    failure {
+        echo "❌ Pipeline failed! Rolling back..."
         sh "docker-compose down || true"
+        
+
+    always {
+        echo "🧹 Workspace cleanup skipped (Kubernetes agent auto-cleans)."
     }
 }
 
-
-        always {
-            echo "🧹 Cleaning workspace..."
-            deleteDir()     // FIX: cleanWs() removed
-        }
-    }
 }
