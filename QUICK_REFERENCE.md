@@ -122,7 +122,7 @@ When creating GitHub Personal Access Token:
 ## 🎯 Files Updated for College Server
 
 - ✅ `Jenkinsfile` - Updated URLs to college servers
-- ✅ `smark-parking-backend/pom.xml` - Updated Nexus URLs
+- ✅ `smart-parking-backend/pom.xml` - Updated Nexus URLs
 - ✅ `COLLEGE_JENKINS_SETUP.md` - Complete setup guide
 - ✅ `QUICK_REFERENCE.md` - This file
 

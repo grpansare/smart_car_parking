@@ -307,7 +307,7 @@ DOCKER_IMAGE_NAME = 'your-dockerhub-username/smart-parking-frontend'
    - Repository URL: `https://github.com/your-username/smart_car_parking.git`
    - Credentials: Select `github-credentials`
    - Branch: `*/main` (or your branch)
-   - Script Path: `smark-parking-backend/Jenkinsfile`
+   - Script Path: `smart-parking-backend/Jenkinsfile`
 5. **Save**
 
 ### 8.3 Create Frontend Pipeline

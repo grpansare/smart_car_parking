@@ -305,7 +305,7 @@ sudo systemctl restart jenkins
 
 ### Step 10: Update Your Backend pom.xml
 
-Ensure your `smark-parking-backend/pom.xml` has the distribution management section:
+Ensure your `smart-parking-backend/pom.xml` has the distribution management section:
 
 ```xml
 <distributionManagement>

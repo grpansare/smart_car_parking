@@ -345,7 +345,7 @@ Now in Jenkins:
    - Repository URL: (your GitHub repo URL)
    - Credentials: `github-credentials`
    - Branch: `*/main` (or your branch)
-   - Script Path: `smark-parking-backend/Jenkinsfile`
+   - Script Path: `smart-parking-backend/Jenkinsfile`
 5. **Save**
 - [ ] Backend pipeline created
 
@@ -370,7 +370,7 @@ Now in Jenkins:
 
 ### Step 12.1: Update .env File
 ```bash
-cd ~/smart_car_parking/smark-parking-backend
+cd ~/smart_car_parking/smart-parking-backend
 cp .env.example .env
 nano .env
 ```

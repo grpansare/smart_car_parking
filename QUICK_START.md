@@ -34,7 +34,7 @@ docker-compose -f docker-compose-sonarqube.yml up -d
 
 ### Step 3: Update Docker Image Names (3 min)
 Replace `your-dockerhub-username` in these files:
-- `smark-parking-backend/Jenkinsfile` (line 12)
+- `smart-parking-backend/Jenkinsfile` (line 12)
 - `smart-parking-frontend/Jenkinsfile` (line 11)
 - `docker-compose.yml` (lines 6 and 26)
 
@@ -93,7 +93,7 @@ Configure SonarQube server:
 - Pipeline from SCM → Git
 - Repository: Your GitHub repo URL
 - Credentials: `github-credentials`
-- Script Path: `smark-parking-backend/Jenkinsfile`
+- Script Path: `smart-parking-backend/Jenkinsfile`
 - ✅ GitHub hook trigger
 
 **Frontend Pipeline:**

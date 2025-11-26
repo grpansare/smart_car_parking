@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # Backend Service
+  backend:
+    image: ${DOCKER_REGISTRY:-your-dockerhub-username}/smart-parking-backend:latest
+    container_name: smart-parking-backend
+    ports:
+      - "8081:8081"
+    environment:
+      # Spring Boot Configuration
+      - SPRING_PROFILES_ACTIVE=prod
+      
+      # Database Configuration (AWS RDS)
+      - SPRING_DATASOURCE_URL=jdbc:mysql://${DB_HOST}:${DB_PORT:-3306}/${DB_NAME}?useSSL=true&requireSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      
+      # JWT Configuration
+      - JWT_SECRET=${JWT_SECRET}
+      
+      # Razorpay Configuration
+      - RAZORPAY_KEY_ID=${RAZORPAY_KEY_ID}
+      - RAZORPAY_KEY_SECRET=${RAZORPAY_KEY_SECRET}
+      
+      # Google OAuth (Optional)
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-}
+      
+      # Application URLs
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost}
+      
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Frontend Service
+  frontend:
+    image: ${DOCKER_REGISTRY:-your-dockerhub-username}/smart-parking-frontend:latest
+    container_name: smart-parking-frontend
+    ports:
+      - "80:80"
+    environment:
+      - REACT_APP_API_URL=${BACKEND_URL:-http://localhost:8081}
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  app-network:
+    driver: bridge

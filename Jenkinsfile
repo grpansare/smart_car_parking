@@ -98,7 +98,7 @@ spec:
                     stages {
                         stage('Backend: Build') {
                             steps {
-                                dir('smark-parking-backend') {
+                                dir('smart-parking-backend') {
                                     sh 'mvn clean compile -DskipTests'
                                 }
                             }
@@ -106,7 +106,7 @@ spec:
                         stage('Backend: SonarQube') {
                             when { expression { false } } // Temporarily disabled due to DNS issues
                             steps {
-                                dir('smark-parking-backend') {
+                                dir('smart-parking-backend') {
                                     withSonarQubeEnv('sonarqube-2401115') {
                                         sh """
                                             mvn sonar:sonar \
@@ -119,7 +119,7 @@ spec:
                         }
                         stage('Backend: Package') {
                             steps {
-                                dir('smark-parking-backend') {
+                                dir('smart-parking-backend') {
                                     sh 'mvn package -DskipTests'
                                 }
                             }
@@ -127,7 +127,7 @@ spec:
                         stage('Backend: Deploy to Nexus') {
                             when { expression { false } } // Temporarily disabled - 401 error
                             steps {
-                                dir('smark-parking-backend') {
+                                dir('smart-parking-backend') {
                                     sh """
                                         mvn deploy -DskipTests \
                                         -DaltDeploymentRepository=nexus::default::${NEXUS_URL}/repository/${NEXUS_REPOSITORY}
@@ -138,7 +138,7 @@ spec:
                         stage('Backend: Build Docker Image') {
                             steps {
                                 container('dind') {
-                                    dir('smark-parking-backend') {
+                                    dir('smart-parking-backend') {
                                         script {
                                             env.BACKEND_IMAGE =
                                                 docker.build("${NEXUS_DOCKER_REGISTRY}/smart-parking-backend:${BUILD_VERSION}")

@@ -236,7 +236,7 @@ For local development, you can:
 - ✅ Deploys full stack using docker-compose
 - ✅ Performs health checks on both services
 
-> **Note:** The old separate pipelines (`smark-parking-backend/Jenkinsfile` and `smart-parking-frontend/Jenkinsfile`) are still available if you need to run them individually.
+> **Note:** The old separate pipelines (`smart-parking-backend/Jenkinsfile` and `smart-parking-frontend/Jenkinsfile`) are still available if you need to run them individually.
 
 ---
 
