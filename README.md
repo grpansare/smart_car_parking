@@ -8,6 +8,14 @@ A full-stack Smart Car Parking System designed to simplify the process of bookin
 
 ---
 
+## 🌐 Live Deployment
+
+- **Frontend (Netlify)**: [https://parkeasein.netlify.app](https://parkeasein.netlify.app)
+- **Backend API (Render)**: [https://smart-car-parking-wa4f.onrender.com](https://smart-car-parking-wa4f.onrender.com)
+- **Database**: PostgreSQL (Neon)
+
+---
+
 ## 🛠️ Tech Stack
 
 ### 🖥️ Frontend
