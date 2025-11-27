@@ -37,7 +37,7 @@ const SlotManagement = ({ addnewslot }) => {
     let token = Cookies.get("jwt") || localStorage.getItem("token");
     try {
       const response = await axios.get(
-        `http://localhost:8081/parkingowner/parkingspace/${currentUser.email}`,
+        `https://smart-car-parking-wa4f.onrender.com/parkingowner/parkingspace/${currentUser.email}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ const SlotManagement = ({ addnewslot }) => {
 
     try {
       const response = await axios.put(
-        "http://localhost:8081/parkingspaces/updateimage",
+        "https://smart-car-parking-wa4f.onrender.com/parkingspaces/updateimage",
         formData,
         {
           headers: {
@@ -112,7 +112,7 @@ const SlotManagement = ({ addnewslot }) => {
                         src={
                           parkingImage ||
                           (parkingSpace?.parkingSpaceImage &&
-                            `http://localhost:8081/${parkingSpace.parkingSpaceImage.trim()}`) ||
+                            `https://smart-car-parking-wa4f.onrender.com/${parkingSpace.parkingSpaceImage.trim()}`) ||
                           "../parkingspace.jpeg"
                         }
                         alt="Parking Space"

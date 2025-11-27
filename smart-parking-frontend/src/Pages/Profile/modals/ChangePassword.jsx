@@ -43,7 +43,7 @@ const ChangePassword = ({
 
     try {
       // Send request to the backend to update the password
-      const response = await axios.post('http://localhost:8081/user/changepassword', {
+      const response = await axios.post('https://smart-car-parking-wa4f.onrender.com/user/changepassword', {
         password,email:email
       });
        Swal.fire('Success', 'Password Updatef successfully!', 'success').then(() => {

@@ -179,7 +179,7 @@ const Registration = () => {
   };
    const googleLogin = () => {
     window.location.href =
-      "http://localhost:8081/oauth2/authorization/google?prompt=select_account";
+      "https://smart-car-parking-wa4f.onrender.com/oauth2/authorization/google?prompt=select_account";
   };
 
   return (

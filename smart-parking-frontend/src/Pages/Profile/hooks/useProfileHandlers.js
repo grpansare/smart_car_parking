@@ -95,7 +95,7 @@ export const useProfileHandlers = ({
     }
     try {
       await axios.put(
-        `http://localhost:8081/parkingowner/update/${ownerDetails.userId}`,
+        `https://smart-car-parking-wa4f.onrender.com/parkingowner/update/${ownerDetails.userId}`,
         tempProfileDetails,
         {
           headers: {
@@ -132,7 +132,7 @@ export const useProfileHandlers = ({
     formData.append("availableTo", dayjs(availableTo).format("HH:mm:ss"));
     try {
       const response = await axios.put(
-        `http://localhost:8081/parkingspaces/updatepriceandtime/${lotName}`,
+        `https://smart-car-parking-wa4f.onrender.com/parkingspaces/updatepriceandtime/${lotName}`,
         formData,
         {
           headers: {
@@ -176,7 +176,7 @@ export const useProfileHandlers = ({
     const id = ownerDetails.parkingSpaces[0].id;
 
     await axios.put(
-      `http://localhost:8081/parkingspaces/update/${id}?userId=${ownerDetails.userId}`,
+      `https://smart-car-parking-wa4f.onrender.com/parkingspaces/update/${id}?userId=${ownerDetails.userId}`,
       tempParkingDetails,
       {
         headers: {
@@ -218,7 +218,7 @@ export const useProfileHandlers = ({
 
     try {
       const response = await axios.patch(
-        "http://localhost:8081/user/uploadimage",
+        "https://smart-car-parking-wa4f.onrender.com/user/uploadimage",
         formData,
         {
           headers: {
@@ -265,7 +265,7 @@ export const useProfileHandlers = ({
       setShowSpaceDetailsModal(false);
     }
     await axios.put(
-      `http://localhost:8081/parkingowner/${ownerDetails.userId}/update-Space`,
+      `https://smart-car-parking-wa4f.onrender.com/parkingowner/${ownerDetails.userId}/update-Space`,
       tempSpaceDetails,
       {
         headers: {

@@ -155,7 +155,7 @@ const AvailableSpaces = ({
                   <div className="relative">
                     <img
                       src={
-                        `http://localhost:8081/${spot.parkingSpaceImage}` ||
+                        `https://smart-car-parking-wa4f.onrender.com/${spot.parkingSpaceImage}` ||
                         "parkingspace.jpeg"
                       }
                       alt={spot.lotName}

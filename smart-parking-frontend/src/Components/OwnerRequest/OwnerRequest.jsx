@@ -45,7 +45,7 @@ export default function OwnerRequests() {
   const [owners, setOwners] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8081/admin/getParkingOwners")
+      .get("https://smart-car-parking-wa4f.onrender.com/admin/getParkingOwners")
       .then((response) => setOwners(response.data))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -55,7 +55,7 @@ export default function OwnerRequests() {
     console.log(id);
 
     axios
-      .post(`http://localhost:8081/admin/${id}/accept`)
+      .post(`https://smart-car-parking-wa4f.onrender.com/admin/${id}/accept`)
       .then(() => {
         setOwners((prevOwners) =>
           prevOwners.map((owner) =>
@@ -69,7 +69,7 @@ export default function OwnerRequests() {
   // ✅ Handle Reject Request
   const handleReject = (id) => {
     axios
-      .post(`http://localhost:8081/admin/${id}/reject`)
+      .post(`https://smart-car-parking-wa4f.onrender.com/admin/${id}/reject`)
       .then(() => {
         setOwners((prevOwners) =>
           prevOwners.map((owner) =>

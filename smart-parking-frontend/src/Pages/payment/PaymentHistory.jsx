@@ -29,7 +29,7 @@ const PaymentHistory = () => {
       }
       
       const response = await axios.get(
-        `http://localhost:8081/api/payment/getAllPayments/${ownerDetails.parkingSpaces[0].lotName}`,
+        `https://smart-car-parking-wa4f.onrender.com/api/payment/getAllPayments/${ownerDetails.parkingSpaces[0].lotName}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

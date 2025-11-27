@@ -51,7 +51,7 @@ const ForgotPassword = () => {
     setisLoading(true);
     try {
       const response = await axios.post(
-        `http://localhost:8081/user/send?email=${email}`
+        `https://smart-car-parking-wa4f.onrender.com/user/send?email=${email}`
       );
       setMessage(response.data.msg);
       setOtp(response.data.otp);
@@ -71,7 +71,7 @@ const ForgotPassword = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8081/user/verify?otp=${userOtp}`
+        `https://smart-car-parking-wa4f.onrender.com/user/verify?otp=${userOtp}`
       );
       console.log(response.data);
 

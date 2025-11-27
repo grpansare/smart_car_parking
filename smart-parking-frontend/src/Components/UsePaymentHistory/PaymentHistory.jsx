@@ -29,7 +29,7 @@ const UserPaymentHistory = () => {
     
 
         const response = await axios.get(
-          `http://localhost:8081/api/payment/getAllUserPayments/${currentUser.email}`,
+          `https://smart-car-parking-wa4f.onrender.com/api/payment/getAllUserPayments/${currentUser.email}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

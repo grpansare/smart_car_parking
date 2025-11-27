@@ -20,7 +20,7 @@ class WebSocketService {
       // Use environment variable or fallback to localhost
       const socketUrl = import.meta.env.VITE_API_URL 
         ? `${import.meta.env.VITE_API_URL}/ws` 
-        : 'http://localhost:8081/ws';
+        : 'https://smart-car-parking-wa4f.onrender.com/ws';
 
       this.client = new Client({
         webSocketFactory: () => new SockJS(socketUrl),

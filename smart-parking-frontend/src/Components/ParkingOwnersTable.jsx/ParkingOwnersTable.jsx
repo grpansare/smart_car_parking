@@ -37,7 +37,7 @@ export default function ParkingOwnersTable() {
   // ✅ Fetch parking owners
   useEffect(() => {
     axios
-      .get("http://localhost:8081/admin/getParkingOwners")
+      .get("https://smart-car-parking-wa4f.onrender.com/admin/getParkingOwners")
       .then(checkAccepted)
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -54,7 +54,7 @@ export default function ParkingOwnersTable() {
   };
   const handleAccept = (id) => {
     axios
-      .post(`http://localhost:8081/parking-owners/${id}/accept`)
+      .post(`https://smart-car-parking-wa4f.onrender.com/parking-owners/${id}/accept`)
       .then(() => {
         setOwners((prevOwners) =>
           prevOwners.map((owner) =>
@@ -68,7 +68,7 @@ export default function ParkingOwnersTable() {
   // ✅ Handle Reject Request
   const handleReject = (id) => {
     axios
-      .post(`http://localhost:8081/parking-owners/${id}/reject`)
+      .post(`https://smart-car-parking-wa4f.onrender.com/parking-owners/${id}/reject`)
       .then(() => {
         setOwners((prevOwners) =>
           prevOwners.map((owner) =>

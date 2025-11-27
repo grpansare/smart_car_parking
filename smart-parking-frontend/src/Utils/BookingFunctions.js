@@ -5,7 +5,7 @@ export const cancelBooking = async (selectedSlot, selectedSpot) => {
 
   try {
     const response = await axios.put(
-      `http://localhost:8081/parkingspaces/cancelbooking/${selectedSlot}`,
+      `https://smart-car-parking-wa4f.onrender.com/parkingspaces/cancelbooking/${selectedSlot}`,
       { spaceId: selectedSpot.spaceIdd || selectedSpot.spaceId},
       { withCredentials: true }
     );

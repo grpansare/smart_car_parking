@@ -1,6 +1,6 @@
 // socket.js
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:8081"); // your backend URL
+const socket = io("https://smart-car-parking-wa4f.onrender.com"); // your backend URL
 
 export default socket;

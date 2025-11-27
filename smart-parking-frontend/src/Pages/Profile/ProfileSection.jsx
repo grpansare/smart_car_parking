@@ -30,7 +30,7 @@ const ProfileSection = ({
                     src={
                       profilePicture ||
                       (currentUser?.profileImage &&
-                        `http://localhost:8081/uploads/${currentUser.profileImage.trim()}`) ||
+                        `https://smart-car-parking-wa4f.onrender.com/uploads/${currentUser.profileImage.trim()}`) ||
                       "../images.png"
                     }
                     alt="Profile"

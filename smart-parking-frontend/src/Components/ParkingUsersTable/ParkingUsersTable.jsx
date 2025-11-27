@@ -40,7 +40,7 @@ export default function ParkingUsersTable() {
   const getParkingUser = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:8081/admin/getParkingUsers"
+        "https://smart-car-parking-wa4f.onrender.com/admin/getParkingUsers"
       );
       setParkingUser(res.data);
     } catch (e) {

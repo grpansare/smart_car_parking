@@ -40,7 +40,7 @@ const Receipt = () => {
    
     try {
       const response = await axios.get(
-        `http://localhost:8081/api/bookings/generateReciept/${bookingId}`,
+        `https://smart-car-parking-wa4f.onrender.com/api/bookings/generateReciept/${bookingId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

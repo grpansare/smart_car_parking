@@ -39,7 +39,7 @@ const Home = () => {
     
       try {
         const response = await axios.get(
-          `http://localhost:8081/parkingowner/addnewslot/${userDetails?.parkingSpaces[0].id}`,
+          `https://smart-car-parking-wa4f.onrender.com/parkingowner/addnewslot/${userDetails?.parkingSpaces[0].id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ const Home = () => {
     
         // Wait for profile to update, then recalculate
         const updatedProfile = await axios.get(
-          `http://localhost:8081/parkingowner/${currentUser.email}`,
+          `https://smart-car-parking-wa4f.onrender.com/parkingowner/${currentUser.email}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ const Home = () => {
       let token = Cookies.get("jwt") || localStorage.getItem("token");
       try {
         const response = await axios.get(
-          `http://localhost:8081/parkingowner/${currentUser.email}`,
+          `https://smart-car-parking-wa4f.onrender.com/parkingowner/${currentUser.email}`,
   
           {
             headers: {

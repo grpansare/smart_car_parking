@@ -26,7 +26,7 @@ const Dashboard = () => {
   //   }
   //   const fetchUserInfo = async () => {
   //     try {
-  //       const response = await axios.get("http://localhost:8081/user/userinfo", {
+  //       const response = await axios.get("https://smart-car-parking-wa4f.onrender.com/user/userinfo", {
   //         withCredentials: true, // Ensures authentication cookies are sent
   //       });
   //       setUserInfo(response.data);

@@ -18,7 +18,7 @@ const LoginModal = ({ isOpen, onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const URL = "http://localhost:8081/user/login";
+  const URL = "https://smart-car-parking-wa4f.onrender.com/user/login";
 
   const handleChange = (e) => {
     const { name, value } = e.target;

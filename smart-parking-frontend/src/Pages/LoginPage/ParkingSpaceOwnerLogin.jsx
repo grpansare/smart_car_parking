@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../Store/UserSlice/UserSlice";
 
 const ParkingOwnerLoginPage = () => {
-  const URL = "http://localhost:8081/user/login";
+  const URL = "https://smart-car-parking-wa4f.onrender.com/user/login";
   const navigate = useNavigate();
 
   const dispatch = useDispatch();

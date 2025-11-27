@@ -65,7 +65,7 @@ const AllUserHistory = () => {
     let token = Cookies.get("jwt") || localStorage.getItem("token");
     try {
      const response = await axios.get(
-        `http://localhost:8081/api/bookings/${ownerDetails.parkingSpaces[0].id}/getbookings`,
+        `https://smart-car-parking-wa4f.onrender.com/api/bookings/${ownerDetails.parkingSpaces[0].id}/getbookings`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -112,7 +112,7 @@ const AllUserHistory = () => {
           const currentTimestamp = Math.floor(Date.now() / 1000);
           
           const departureResponse = await axios.put(
-            `http://localhost:8081/api/bookings/${bookingId}/departure`,
+            `https://smart-car-parking-wa4f.onrender.com/api/bookings/${bookingId}/departure`,
             { departureTime: currentTimestamp },
             {
               headers: {

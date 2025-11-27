@@ -203,7 +203,7 @@ function ParkingOwnerRegistrationForm() {
     try {
       setisLoading(true);
       const response = await axios.post(
-        "http://localhost:8081/parkingowner",
+        "https://smart-car-parking-wa4f.onrender.com/parkingowner",
         payload,
         {
           headers: {
@@ -232,7 +232,7 @@ function ParkingOwnerRegistrationForm() {
     formData.append("image", imageFile);
 
     await axios.post(
-      `http://localhost:8081/parkingowner/${userId}/upload-image`,
+      `https://smart-car-parking-wa4f.onrender.com/parkingowner/${userId}/upload-image`,
       formData,
       {
         headers: {

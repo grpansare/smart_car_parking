@@ -62,7 +62,7 @@ const UserProfile = () => {
 
     try {
       const response = await axios.patch(
-        "http://localhost:8081/user/uploadimage",
+        "https://smart-car-parking-wa4f.onrender.com/user/uploadimage",
         formData,
         {
           headers: {
@@ -119,7 +119,7 @@ const UserProfile = () => {
     if (token) {
       try {
         const res = await axios.get(
-          `http://localhost:8081/user/getvehiclesInfo/${currentUser.email}`,
+          `https://smart-car-parking-wa4f.onrender.com/user/getvehiclesInfo/${currentUser.email}`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // ✅ Pass JWT Token in Header
@@ -207,7 +207,7 @@ const UserProfile = () => {
 
       // Uncomment when API is ready
       // const res = await axios.post(
-      //   'http://localhost:8081/user/feedback',
+      //   'https://smart-car-parking-wa4f.onrender.com/user/feedback',
       //   feedbackPayload,
       //   {
       //     headers: {
@@ -429,7 +429,7 @@ const UserProfile = () => {
     }
     try {
       const res = await axios.patch(
-        `http://localhost:8081/user/updateinfo/${currentUser.email}`,
+        `https://smart-car-parking-wa4f.onrender.com/user/updateinfo/${currentUser.email}`,
         userDetails,
         {
           headers: {
@@ -473,7 +473,7 @@ const UserProfile = () => {
 
     try {
       const res = await axios.patch(
-        `http://localhost:8081/user/changepassword/${currentUser.email}`,
+        `https://smart-car-parking-wa4f.onrender.com/user/changepassword/${currentUser.email}`,
         {
           currentPassword: passwordData.currentPassword,
           newPassword: passwordData.newPassword,
@@ -510,7 +510,7 @@ const UserProfile = () => {
               src={
                 profilePicture ||
                 (currentUser?.profileImage &&
-                  `http://localhost:8081/uploads/${currentUser.profileImage.trim()}`) ||
+                  `https://smart-car-parking-wa4f.onrender.com/uploads/${currentUser.profileImage.trim()}`) ||
                 "../images.png"
               }
               alt="Profile"

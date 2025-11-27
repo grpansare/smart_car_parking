@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:8081",
+  baseURL: import.meta.env.VITE_API_URL || "https://smart-car-parking-wa4f.onrender.com",
   withCredentials: true,
 });
 

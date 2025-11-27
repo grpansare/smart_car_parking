@@ -43,7 +43,7 @@ const BookingHistory = () => {
     console.log(token)
     try {
       const response = await axios.get(
-        `http://localhost:8081/api/bookings/${currentUser.userId}`,
+        `https://smart-car-parking-wa4f.onrender.com/api/bookings/${currentUser.userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -99,7 +99,7 @@ const BookingHistory = () => {
 
       // Here you would make an API call to update the booking
 
-      await axios.put(`http://localhost:8081/api/bookings/update-time/${bookingId}`, {
+      await axios.put(`https://smart-car-parking-wa4f.onrender.com/api/bookings/update-time/${bookingId}`, {
   arrivalTime: new Date(editFormData.arrivalTime).toISOString(),  // must be in ISO format
   departureTime: new Date(editFormData.departureTime).toISOString(),
 }, {

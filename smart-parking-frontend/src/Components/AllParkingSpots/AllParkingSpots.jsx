@@ -75,7 +75,7 @@ const AllParkingSpots = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8081/parkingspaces/bookparking`,
+        `https://smart-car-parking-wa4f.onrender.com/parkingspaces/bookparking`,
         { spaceId: selected.id },
         {
           params: slotNumber ? { slotNumber } : {},
@@ -100,7 +100,7 @@ const AllParkingSpots = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://localhost:8081/parkingspaces/getAllParkingSpaces')
+      .get('https://smart-car-parking-wa4f.onrender.com/parkingspaces/getAllParkingSpaces')
       .then((res) => {
         console.log(res.data);
         
@@ -123,7 +123,7 @@ const AllParkingSpots = () => {
     try {
       console.log("Sending request to create order");
       const response = await axios.post(
-        "http://localhost:8081/api/payment/create-order",
+        "https://smart-car-parking-wa4f.onrender.com/api/payment/create-order",
         paymentData,
         {
           headers: {
@@ -160,7 +160,7 @@ const AllParkingSpots = () => {
 
           try {
             await axios.post(
-              "http://localhost:8081/api/payment/store",
+              "https://smart-car-parking-wa4f.onrender.com/api/payment/store",
               paymentDetails,
               {
                 headers: { Authorization: `Bearer ${token}` },
@@ -168,7 +168,7 @@ const AllParkingSpots = () => {
             );
 
             const response = await axios.post(
-              `http://localhost:8081/api/bookings/${selectedSlot}`,
+              `https://smart-car-parking-wa4f.onrender.com/api/bookings/${selectedSlot}`,
               bookingData,
               {
                 headers: { Authorization: `Bearer ${token}` },
@@ -361,7 +361,7 @@ const AllParkingSpots = () => {
                 >
                   <div className="relative overflow-hidden">
                     <img
-                      src={`http://localhost:8081/${spot.parkingSpaceImage}` ||
+                      src={`https://smart-car-parking-wa4f.onrender.com/${spot.parkingSpaceImage}` ||
                       "parkingspace.jpeg"}
                       alt={spot.lotName}
                       className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"

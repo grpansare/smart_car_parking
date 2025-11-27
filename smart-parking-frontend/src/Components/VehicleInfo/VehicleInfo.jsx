@@ -46,7 +46,7 @@ const VehicleInfo = ({ setVehicles, vehicles }) => {
     if (token) {
       try {
         const res = await axios.post(
-          `http://localhost:8081/user/addvehicle/${currentUser.email}`,
+          `https://smart-car-parking-wa4f.onrender.com/user/addvehicle/${currentUser.email}`,
           formData,
           {
             withCredentials: true, // ✅ Send JWT cookie

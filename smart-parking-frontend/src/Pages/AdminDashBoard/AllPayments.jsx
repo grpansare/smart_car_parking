@@ -26,7 +26,7 @@ const AllPayments = () => {
       
       
       const response = await axios.get(
-        `http://localhost:8081/api/payment/getPayments`,
+        `https://smart-car-parking-wa4f.onrender.com/api/payment/getPayments`,
         
       );
       
