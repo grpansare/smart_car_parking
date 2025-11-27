@@ -148,8 +148,10 @@ public class SecurityConfig {
             "http://localhost:5173",
             "http://localhost:3000", // Docker frontend
             "http://127.0.0.1:5173",
-            "http://127.0.0.1:3000"
+            "http://127.0.0.1:3000",
+            "https://parkeasein.netlify.app" // Production Netlify frontend
         ));
+
         
         // Allow Headers
         configuration.setAllowedHeaders(List.of("*"));
@@ -235,7 +237,8 @@ public class SecurityConfig {
             // Environment-specific redirect URL
             String redirectUrl = isLocalProfile() ? 
                 "http://localhost:5173/dashboard" : 
-                "https://smart-car-parking-1.onrender.com/dashboard";
+                "https://parkeasein.netlify.app/dashboard";
+
             
             response.sendRedirect(redirectUrl);
 

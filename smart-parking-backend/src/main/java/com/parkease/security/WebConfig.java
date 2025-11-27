@@ -20,7 +20,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/uploads/**")
-                .allowedOrigins("http://localhost:5173") // ✅ Allow React frontend
+                .allowedOrigins("http://localhost:5173", "https://parkeasein.netlify.app") // ✅ Allow React frontend
                 .allowedMethods("GET")
                 .allowedHeaders("*")
                 .allowCredentials(true);
